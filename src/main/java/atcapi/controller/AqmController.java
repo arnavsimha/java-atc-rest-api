@@ -48,7 +48,7 @@ public class AqmController {
     @RequestMapping(value = "/dequeue")
     public AqmDequeueResponse dequeueAircraft(){
         AqmResponse response = queueManager.aqmRequestProcess(new AqmDequeueRequest());
-        
+
         return (AqmDequeueResponse) response;
     }
 
