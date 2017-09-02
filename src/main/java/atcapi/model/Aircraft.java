@@ -1,4 +1,4 @@
-package model;
+package atcapi.model;
 
 public class Aircraft {
 

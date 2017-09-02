@@ -1,10 +1,12 @@
-import model.Aircraft;
-import model.request.AqmBootRequest;
-import model.request.AqmDequeueRequest;
-import model.request.AqmEnqueueRequest;
-import model.request.AqmRequest;
-import model.response.AqmDequeueResponse;
-import model.response.AqmResponse;
+package atcapi;
+
+import atcapi.model.Aircraft;
+import atcapi.model.request.AqmBootRequest;
+import atcapi.model.request.AqmDequeueRequest;
+import atcapi.model.request.AqmEnqueueRequest;
+import atcapi.model.request.AqmRequest;
+import atcapi.model.response.AqmDequeueResponse;
+import atcapi.model.response.AqmResponse;
 
 import java.util.PriorityQueue;
 

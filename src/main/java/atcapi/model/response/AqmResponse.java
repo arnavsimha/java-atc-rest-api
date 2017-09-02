@@ -1,4 +1,4 @@
-package model.response;
+package atcapi.model.response;
 
 public class AqmResponse {
 

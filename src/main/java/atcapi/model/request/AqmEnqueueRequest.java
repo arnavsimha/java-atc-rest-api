@@ -1,8 +1,8 @@
-package model.request;
+package atcapi.model.request;
 
 
-import model.AircraftSize;
-import model.AircraftType;
+import atcapi.model.AircraftSize;
+import atcapi.model.AircraftType;
 
 public class AqmEnqueueRequest extends AqmRequest{
 

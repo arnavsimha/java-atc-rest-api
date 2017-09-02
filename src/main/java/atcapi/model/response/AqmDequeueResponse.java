@@ -1,7 +1,7 @@
-package model.response;
+package atcapi.model.response;
 
 
-import model.Aircraft;
+import atcapi.model.Aircraft;
 
 public class AqmDequeueResponse extends AqmResponse {
 

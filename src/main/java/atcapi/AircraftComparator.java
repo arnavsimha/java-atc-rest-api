@@ -1,4 +1,6 @@
-import model.Aircraft;
+package atcapi;
+
+import atcapi.model.Aircraft;
 
 import java.util.Comparator;
 
