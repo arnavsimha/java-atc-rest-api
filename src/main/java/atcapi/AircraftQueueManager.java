@@ -7,6 +7,7 @@ import atcapi.model.request.AqmEnqueueRequest;
 import atcapi.model.request.AqmRequest;
 import atcapi.model.response.AqmDequeueResponse;
 import atcapi.model.response.AqmResponse;
+import atcapi.model.response.AqmStatusResponse;
 
 import java.util.PriorityQueue;
 
@@ -37,7 +38,7 @@ public class AircraftQueueManager {
                     new Aircraft(((AqmEnqueueRequest) request).getType(), ((AqmEnqueueRequest) request).getSize()));
             return new AqmResponse("Aircraft enqueued successfully!");
         } else if(request instanceof AqmDequeueRequest){
-            return new AqmDequeueResponse("Aircraft dequeued successfully!", this.dequeAircraft());
+            return this.dequeAircraft();
         }
 
         return new AqmResponse("Request type not recognized!");
@@ -59,9 +60,11 @@ public class AircraftQueueManager {
         return aircraftQueue.offer(ac);
     }
 
-    private Aircraft dequeAircraft(){
+    private AqmDequeueResponse dequeAircraft(){
         //add error checking
-        return aircraftQueue.poll();
+        return new AqmDequeueResponse(
+                "Dequeue Response",
+                aircraftQueue.poll() );
     }
 
     public int size(){
@@ -69,6 +72,6 @@ public class AircraftQueueManager {
     }
 
     public AqmResponse getStatus(){
-        return new AqmResponse("System booted? " + systemBooted + " current queue size is " + size());
+        return new AqmStatusResponse(this.systemBooted, this.size());
     }
 }

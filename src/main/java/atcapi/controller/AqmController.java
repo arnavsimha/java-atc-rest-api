@@ -4,13 +4,16 @@ import atcapi.AircraftQueueManager;
 import atcapi.model.AircraftSize;
 import atcapi.model.AircraftType;
 import atcapi.model.request.AqmBootRequest;
+import atcapi.model.request.AqmDequeueRequest;
 import atcapi.model.request.AqmEnqueueRequest;
+import atcapi.model.response.AqmDequeueResponse;
 import atcapi.model.response.AqmResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.xml.ws.Response;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -35,11 +38,19 @@ public class AqmController {
         return queueManager.aqmRequestProcess(new AqmBootRequest());
     }
 
-    @RequestMapping(value = "/enqueue/type/{type}/size/{size}", method = RequestMethod.POST)
+    @RequestMapping(value = "/enqueue/{type}/{size}", method = RequestMethod.POST)
     public AqmResponse enqueueAircraft(@PathVariable AircraftType type, @PathVariable AircraftSize size){
         return queueManager.aqmRequestProcess(
                 new AqmEnqueueRequest(type, size)
         );
     }
+
+    @RequestMapping(value = "/dequeue")
+    public AqmDequeueResponse dequeueAircraft(){
+        AqmResponse response = queueManager.aqmRequestProcess(new AqmDequeueRequest());
+
+        return (AqmDequeueResponse) response;
+    }
+
 
 }

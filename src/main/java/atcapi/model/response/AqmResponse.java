@@ -8,11 +8,12 @@ public class AqmResponse {
         this.status = status;
     }
 
-    public String getStatus() {
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public String getStatus(){
         return this.status;
     }
 
-    public String toString(){
-        return this.status;
-    }
 }
