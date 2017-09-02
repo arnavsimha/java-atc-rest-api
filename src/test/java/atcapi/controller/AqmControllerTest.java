@@ -36,7 +36,6 @@ public class AqmControllerTest {
 
     }
 
-    @Test
     public void basicStatusTest(){
         given().when()
                 .get("/statusz")
@@ -44,7 +43,6 @@ public class AqmControllerTest {
                 .statusCode(200);
     }
 
-    @Test
     public void aqmTest(){
 
         //boot system
