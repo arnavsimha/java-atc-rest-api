@@ -33,7 +33,7 @@ public class AqmController {
         return queueManager.getStatus();
     }
 
-    @RequestMapping(value = "/boot")
+    @RequestMapping(value = "/boot", method = RequestMethod.POST)
     public AqmResponse bootAqm(){
         return queueManager.aqmRequestProcess(new AqmBootRequest());
     }
@@ -45,7 +45,7 @@ public class AqmController {
         );
     }
 
-    @RequestMapping(value = "/dequeue")
+    @RequestMapping(value = "/dequeue", method = RequestMethod.POST)
     public AqmDequeueResponse dequeueAircraft(){
         AqmResponse response = queueManager.aqmRequestProcess(new AqmDequeueRequest());
 

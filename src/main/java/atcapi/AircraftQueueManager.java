@@ -10,11 +10,14 @@ import atcapi.model.response.AqmResponse;
 import atcapi.model.response.AqmStatusResponse;
 
 import java.util.PriorityQueue;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class AircraftQueueManager {
 
     private PriorityQueue<Aircraft> aircraftQueue;
     private boolean systemBooted = false;
+    private final AtomicLong counter = new AtomicLong();
+
 
     public AircraftQueueManager(){
         aircraftQueue = new PriorityQueue<>(new AircraftComparator());
@@ -35,7 +38,7 @@ public class AircraftQueueManager {
             return new AqmResponse("System not booted up, please boot system and retry!");
         } else if(request instanceof AqmEnqueueRequest) {
             this.enqueueAircraft(
-                    new Aircraft(((AqmEnqueueRequest) request).getType(), ((AqmEnqueueRequest) request).getSize()));
+                    new Aircraft(counter.incrementAndGet(), ((AqmEnqueueRequest) request).getType(), ((AqmEnqueueRequest) request).getSize()));
             return new AqmResponse("Aircraft enqueued successfully!");
         } else if(request instanceof AqmDequeueRequest){
             return this.dequeAircraft();
