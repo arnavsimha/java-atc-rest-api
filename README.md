@@ -13,7 +13,7 @@ Building/Running:
 
 `mvn package`
 
-`java -jar atc-rest-api-0.1.0.jar`
+`java -jar target/atc-rest-api-0.1.0.jar`
 
 API doc:
 
