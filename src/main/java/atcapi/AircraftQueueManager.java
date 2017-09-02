@@ -10,12 +10,12 @@ import atcapi.model.response.AqmResponse;
 
 import java.util.PriorityQueue;
 
-public class AircraftQueue {
+public class AircraftQueueManager {
 
     private PriorityQueue<Aircraft> aircraftQueue;
     private boolean systemBooted = false;
 
-    public AircraftQueue(){
+    public AircraftQueueManager(){
         aircraftQueue = new PriorityQueue<>(new AircraftComparator());
     }
 
@@ -66,5 +66,9 @@ public class AircraftQueue {
 
     public int size(){
         return aircraftQueue.size();
+    }
+
+    public AqmResponse getStatus(){
+        return new AqmResponse("System booted? " + systemBooted + " current queue size is " + size());
     }
 }
